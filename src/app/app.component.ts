@@ -1,5 +1,5 @@
-import { Component, OnInit, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +14,9 @@ export class AppComponent implements OnInit {
 
   // Declare empty list of people
   people: any[] = [];
+  person: any
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // Angular 2 Life Cycle event when component has been initialized
   ngOnInit() {
@@ -24,7 +25,7 @@ export class AppComponent implements OnInit {
 
   // Add one person to the API
   public addPerson(name, age) {
-    this.http.post(`${this.API}/users`, {name, age})
+    this.http.post(`${this.API}/users`, { name, age })
       .subscribe(() => {
         this.getAllPeople();
       })
@@ -34,8 +35,15 @@ export class AppComponent implements OnInit {
   public getAllPeople() {
     this.http.get(`${this.API}/users`)
       .subscribe((people: any) => {
-        console.log(people)
         this.people = people
       })
+  }
+
+  // Find 1 person by ID
+
+  public findPerson(id) {
+    this.http.get(`${this.API}/users/${id}`).subscribe((person) => {
+      this.person = person
+    })
   }
 }
