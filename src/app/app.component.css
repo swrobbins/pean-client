@@ -72,6 +72,10 @@
     fill: #888;
   }
 
+  .container {
+    padding-top: 20px;
+  }
+
   .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -117,14 +121,24 @@
     fill: rgb(105, 103, 103);
   }
 
-  .card.highlight-card {
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
+  .card.regular-card {
     border: none;
     width: auto;
     min-width: 30%;
     position: relative;
+  }
+
+  .card.highlight-card {
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    width: auto;
+    min-width: 30%;
+    position: relative;
+    margin-top: 30px;
+    padding-left: 0;
   }
 
   .card.card.highlight-card span {
