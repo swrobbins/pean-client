@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
 
   // Declare empty list of people
   people: any[] = [];
-  person: any
+  person: any;
 
   constructor(private http: HttpClient) { }
 
@@ -28,22 +28,31 @@ export class AppComponent implements OnInit {
     this.http.post(`${this.API}/users`, { name, age })
       .subscribe(() => {
         this.getAllPeople();
-      })
+      });
   }
 
   // Get all users from the API
   public getAllPeople() {
     this.http.get(`${this.API}/users`)
       .subscribe((people: any) => {
-        this.people = people
-      })
+        this.people = people;
+      });
   }
 
   // Find 1 person by ID
 
   public findPerson(id) {
     this.http.get(`${this.API}/users/${id}`).subscribe((person) => {
-      this.person = person
-    })
+      this.person = person;
+    });
   }
+
+  // Delete 1 person by ID
+  public deletePerson(id) {
+    this.http.delete(`${this.API}/users/${id}`).subscribe((person) => {
+      this.person = person;
+      this.getAllPeople();
+    });
+  }
+
 }
