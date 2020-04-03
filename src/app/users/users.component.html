@@ -1,5 +1,5 @@
 <div class="container">
-    <h3>Add new person</h3>
+    <h3>Add new user</h3>
     <form>
         <div class="form-group">
             <label for="name">Name</label>
@@ -9,47 +9,47 @@
             <label for="age">Age</label>
             <input type="number" class="form-control" id="age" #age>
         </div>
-        <button mat-raised-button color="primary" type="button" (click)="addPerson(name.value, age.value)">Add
-            person</button>
+        <button mat-raised-button color="primary" type="button" (click)="addUser(name.value, age.value)">Add
+            user</button>
     </form>
 
-    <h3>People</h3>
+    <h3>Users</h3>
     <!-- Bootstrap Card -->
-    <div class="card card-block col-md-3" *ngFor="let person of people">
-        <h4 class="card-title">{{person.id}}: {{person.name}} {{person.age}}</h4>
+    <div class="card card-block col-md-3" *ngFor="let user of users">
+        <h4 class="card-title">{{user.id}}: {{user.name}} {{user.age}}</h4>
     </div>
 </div>
 
 <div class="container">
-    <h3>Find person</h3>
+    <h3>Find user</h3>
     <form>
         <div class="form-group">
             <label for="id">ID</label>
             <input type="number" class="form-control" id="id" #id>
         </div>
-        <button mat-raised-button color="primary" type="button" (click)="findPerson(id.value)">Find person</button>
+        <button mat-raised-button color="primary" type="button" (click)="findUser(id.value)">Find user</button>
     </form>
 
-    <h3>Person</h3>
-    <div class="card card-block col-md-3" *ngIf="person">
-        <h4 class="card-title">{{person.id}}: {{person.name}} {{person.age}}</h4>
+    <h3>User</h3>
+    <div class="card card-block col-md-3" *ngIf="user">
+        <h4 class="card-title">{{user.id}}: {{user.name}} {{user.age}}</h4>
     </div>
 </div>
 
 <div class="container">
-    <h3>Remove person</h3>
+    <h3>Remove user</h3>
     <form>
         <div class="form-group">
             <label for="removeId">ID</label>
             <input type="number" class="form-control" removeid="removeId" #removeId>
         </div>
-        <button mat-raised-button color="primary" type="button" (click)="deletePerson(removeId.value)">Remove
-            person</button>
+        <button mat-raised-button color="primary" type="button" (click)="removeUser(removeId.value)">Remove
+            user</button>
     </form>
 
-    <h3>People</h3>
+    <h3>Users</h3>
     <!-- Bootstrap Card -->
-    <div class="card card-block col-md-3" *ngFor="let person of people">
-        <h4 class="card-title">{{person.id}}: {{person.name}} {{person.age}}</h4>
+    <div class="card card-block col-md-3" *ngFor="let user of users">
+        <h4 class="card-title">{{user.id}}: {{user.name}} {{user.age}}</h4>
     </div>
 </div>

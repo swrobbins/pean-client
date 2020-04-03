@@ -44,14 +44,14 @@
     margin: 0 16px;
   }
 
-  .mat-toolbar #twitter-logo {
+  .mat-toolbar #github-button {
     height: 40px;
     margin: 0 16px;
   }
 
-  .mat-toolbar #twitter-logo:hover {
+  .mat-toolbar #github-button:hover {
     opacity: 0.8;
-  } 
+  }
 
   .content {
     display: flex;
@@ -150,8 +150,8 @@
   }
 
   .section-title {
-    background-color: #1976d2; 
-    width: 100%; 
+    background-color: #1976d2;
+    width: 100%;
     padding: 5px;
   }
 
