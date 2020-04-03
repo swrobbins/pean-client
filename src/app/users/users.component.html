@@ -1,0 +1,55 @@
+<div class="container">
+    <h3>Add new person</h3>
+    <form>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" #name>
+        </div>
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" class="form-control" id="age" #age>
+        </div>
+        <button mat-raised-button color="primary" type="button" (click)="addPerson(name.value, age.value)">Add
+            person</button>
+    </form>
+
+    <h3>People</h3>
+    <!-- Bootstrap Card -->
+    <div class="card card-block col-md-3" *ngFor="let person of people">
+        <h4 class="card-title">{{person.id}}: {{person.name}} {{person.age}}</h4>
+    </div>
+</div>
+
+<div class="container">
+    <h3>Find person</h3>
+    <form>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="number" class="form-control" id="id" #id>
+        </div>
+        <button mat-raised-button color="primary" type="button" (click)="findPerson(id.value)">Find person</button>
+    </form>
+
+    <h3>Person</h3>
+    <div class="card card-block col-md-3" *ngIf="person">
+        <h4 class="card-title">{{person.id}}: {{person.name}} {{person.age}}</h4>
+    </div>
+</div>
+
+<div class="container">
+    <h3>Remove person</h3>
+    <form>
+        <div class="form-group">
+            <label for="removeId">ID</label>
+            <input type="number" class="form-control" removeid="removeId" #removeId>
+        </div>
+        <button mat-raised-button color="primary" type="button" (click)="deletePerson(removeId.value)">Remove
+            person</button>
+    </form>
+
+    <h3>People</h3>
+    <!-- Bootstrap Card -->
+    <div class="card card-block col-md-3" *ngFor="let person of people">
+        <h4 class="card-title">{{person.id}}: {{person.name}} {{person.age}}</h4>
+    </div>
+</div>
