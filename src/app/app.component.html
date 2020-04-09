@@ -1,11 +1,12 @@
 <div>
   <mat-toolbar color="primary" role="heading">
-    <span>PEAN-Strava</span>
+    <a routerLink="/home">PEAN-Strava</a>
     <span class="spacer"></span>
     <span>
-      <a href="http://localhost:3000/auth/github">
-        <button class="btn btn-primary" id="github-button"><fa-icon [icon]="faGithub" size="lg"></fa-icon>&nbsp;Sign in with GitHub</button>
-      </a>
+      <button (click)="signin()" *ngIf="showSignIn()" class="btn btn-primary" id="github-button">Sign in</button>
+    </span>
+    <span>
+      <button (click)="signout()" *ngIf="showSignOut()" class="btn">Sign out</button>
     </span>
   </mat-toolbar>
 </div>
