@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  frontend:
+    build: .
+    ports:
+      - "4200:4200"
+    container_name: pean-front-container
+    #restart: always
+    volumes:
+      - ./src:/usr/src/app/src
+
+networks:
+  default:
+    external:
+      name: pean-server_default
