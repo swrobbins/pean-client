@@ -1,34 +1,78 @@
 <div class="container">
-    <h3>Add new user</h3>
-    <form>
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" #name>
-        </div>
-        <div class="form-group">
-            <label for="age">Age</label>
-            <input type="number" class="form-control" id="age" #age>
-        </div>
-        <button mat-raised-button color="primary" type="button" (click)="addUser(name.value, age.value)">Add
-            user</button>
-    </form>
+    <div class="flexbox">
+        <form [formGroup]=userProfile>
+            <h3>Add new user</h3>
+            <div fxLayout="column" >
+                <mat-form-field appearance="standard">
+                    <mat-label>First Name</mat-label>
+                    <input matInput formControlName="firstName" required placeholder="First Name">
+                </mat-form-field>
+                <mat-form-field appearance="standard">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput formControlName="lastName" required placeholder="Last Name">
+                </mat-form-field> 
+                <mat-form-field appearance="standard">
+                    <mat-label>Date of Birth</mat-label>
+                    <input matInput formControlName="dateOfBirth" required [matDatepicker]="dateOfBirth">
+                    <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+                    <mat-datepicker #dateOfBirth></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field appearance="standard">
+                    <mat-label>Mobile</mat-label>
+                    <input matInput  formControlName="mobile" required placeholder="xxx-xxx-xxxx" required>
+                </mat-form-field> 
+                <div *ngIf="f.mobile.errors">
+                    Phone Number must be at least 12 characters long.
+                </div>
+                <mat-form-field appearance="standard">
+                    <mat-label>Email</mat-label>
+                    <input matInput  formControlName="email">
+                </mat-form-field> 
 
-    <h3>Users</h3>
-    <!-- Bootstrap Card -->
-    <div class="card card-block col-md-3" *ngFor="let user of users">
-        <h4 class="card-title">{{user.id}}: {{user.name}} {{user.age}}</h4>
+                <div formGroupName="address" fxLayout="column">
+                    <mat-form-field appearance="standard">
+                        <mat-label>Street</mat-label>
+                        <input matInput  formControlName="street">
+                    </mat-form-field> 
+                    <mat-form-field appearance="standard">
+                        <mat-label>City</mat-label>
+                        <input matInput  formControlName="city">
+                    </mat-form-field> 
+                    <mat-form-field appearance="standard">
+                        <mat-label>state</mat-label>
+                        <input matInput  formControlName="state">
+                    </mat-form-field> 
+                    <mat-form-field appearance="standard">
+                        <mat-label>Zip Code</mat-label>
+                        <input matInput  formControlName="zip">
+                    </mat-form-field> 
+                </div>
+                <div>
+                    <button mat-raised-button color="primary" type="button" (click)="addUser()"
+                        [disabled]="!userProfile.valid">Add
+                        user</button>
+                </div>
+            </div>
+        </form>
+
+        <h3>Users</h3>
+        <!-- Bootstrap Card -->
+        <div class="card card-block col-md-3" *ngFor="let user of users">
+            <h4 class="card-title">{{user.id}}: {{user.firstName}} {{user.lastName}} {{user.dateOfBirth}}</h4>
+        </div>
+
     </div>
 </div>
 
-<div class="container">
+<!-- <div class="container">
     <h3>Find user</h3>
-    <form>
-        <div class="form-group">
-            <label for="id">ID</label>
-            <input type="number" class="form-control" id="id" #id>
-        </div>
-        <button mat-raised-button color="primary" type="button" (click)="findUser(id.value)">Find user</button>
-    </form>
+
+    <div class="form-group">
+        <label for="id">ID</label>
+        <input type="number" class="form-control" id="id" #id>
+    </div>
+    <button mat-raised-button color="primary" type="button" (click)="findUser(id.value)">Find user</button>
+
 
     <h3>User</h3>
     <div class="card card-block col-md-3" *ngIf="user">
@@ -38,18 +82,18 @@
 
 <div class="container">
     <h3>Remove user</h3>
-    <form>
-        <div class="form-group">
-            <label for="removeId">ID</label>
-            <input type="number" class="form-control" removeid="removeId" #removeId>
-        </div>
-        <button mat-raised-button color="primary" type="button" (click)="removeUser(removeId.value)">Remove
-            user</button>
-    </form>
+
+    <div class="form-group">
+        <label for="removeId">ID</label>
+        <input type="number" class="form-control" removeid="removeId" #removeId>
+    </div>
+    <button mat-raised-button color="primary" type="button" (click)="removeUser(removeId.value)">Remove
+        user</button>
+
 
     <h3>Users</h3>
-    <!-- Bootstrap Card -->
+     Bootstrap Card 
     <div class="card card-block col-md-3" *ngFor="let user of users">
         <h4 class="card-title">{{user.id}}: {{user.name}} {{user.age}}</h4>
     </div>
-</div>
+</div> -->
