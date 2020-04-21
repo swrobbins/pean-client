@@ -1,23 +1,14 @@
-# Create image based on the official Node image from dockerhub
-FROM node:10
+FROM node:alpine as builder
+WORKDIR /app
+COPY package.json package-lock.json /app/
+RUN cd /app && npm install --no-progress
+COPY .  /app
+RUN cd /app && npm run build --no-progress
 
-# Create a directory where our app will be placed
-RUN mkdir -p /usr/src/app
-
-# Change directory so that our commands run inside this new directory
-WORKDIR /usr/src/app
-
-# Copy dependency definitions
-COPY package*.json /usr/src/app/
-
-# Install dependecies
-RUN npm install
-
-# Get all the code needed to run the app
-COPY . /usr/src/app
-
-# Expose the port the app runs in
-EXPOSE 4200
-
-# Serve the app
-CMD ["npm", "start"]
+FROM nginx:alpine
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=builder /app/dist/angular-client /usr/share/nginx/html
+RUN rm -rf /etc/nginx/conf.d/*
+COPY --from=builder /app/nginx-nodejs-proxy.conf /etc/nginx/conf.d
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
