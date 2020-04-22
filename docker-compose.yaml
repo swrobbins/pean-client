@@ -4,11 +4,9 @@ services:
   frontend:
     build: .
     ports:
-      - "4200:4200"
+      - "4200:80"
     container_name: pean-front-container
-    #restart: always
-    volumes:
-      - ./src:/usr/src/app/src
+    restart: always
 
 networks:
   default:
