@@ -1,4 +1,4 @@
-FROM node:alpine as builder
+FROM node:13-alpine as builder
 WORKDIR /app
 COPY package.json package-lock.json /app/
 RUN cd /app && npm install --no-progress
